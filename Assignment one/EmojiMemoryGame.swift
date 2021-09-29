@@ -9,7 +9,6 @@ import SwiftUI
 
 class EmojiMemoryGame: ObservableObject {
     
-    var test = "Test file for branch and merge Main" 
     
     @Published private var model: MemoryGame<String>
     private var theme: Theme
