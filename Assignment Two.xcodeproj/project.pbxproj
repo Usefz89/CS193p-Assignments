@@ -20,7 +20,7 @@
 		CAAC06E0270247D6000216A5 /* MemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryGame.swift; sourceTree = "<group>"; };
 		CAAC06E227024867000216A5 /* EmojiMemoryGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiMemoryGame.swift; sourceTree = "<group>"; };
 		CAAC06E427025F68000216A5 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
-		CACB444126FF570900CCA38C /* Assignment one.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment one.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACB444126FF570900CCA38C /* Assignment Two.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Assignment Two.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACB444426FF570900CCA38C /* Assignment_oneApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assignment_oneApp.swift; sourceTree = "<group>"; };
 		CACB444626FF570900CCA38C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		CACB444826FF570A00CCA38C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		CACB444226FF570900CCA38C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CACB444126FF570900CCA38C /* Assignment one.app */,
+				CACB444126FF570900CCA38C /* Assignment Two.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,9 +81,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		CACB444026FF570900CCA38C /* Assignment one */ = {
+		CACB444026FF570900CCA38C /* Assignment Two */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CACB445026FF570A00CCA38C /* Build configuration list for PBXNativeTarget "Assignment one" */;
+			buildConfigurationList = CACB445026FF570A00CCA38C /* Build configuration list for PBXNativeTarget "Assignment Two" */;
 			buildPhases = (
 				CACB443D26FF570900CCA38C /* Sources */,
 				CACB443E26FF570900CCA38C /* Frameworks */,
@@ -93,9 +93,9 @@
 			);
 			dependencies = (
 			);
-			name = "Assignment one";
+			name = "Assignment Two";
 			productName = "Assignment one";
-			productReference = CACB444126FF570900CCA38C /* Assignment one.app */;
+			productReference = CACB444126FF570900CCA38C /* Assignment Two.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -112,7 +112,7 @@
 					};
 				};
 			};
-			buildConfigurationList = CACB443C26FF570900CCA38C /* Build configuration list for PBXProject "Assignment one" */;
+			buildConfigurationList = CACB443C26FF570900CCA38C /* Build configuration list for PBXProject "Assignment Two" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -125,7 +125,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				CACB444026FF570900CCA38C /* Assignment one */,
+				CACB444026FF570900CCA38C /* Assignment Two */,
 			);
 		};
 /* End PBXProject section */
@@ -321,7 +321,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		CACB443C26FF570900CCA38C /* Build configuration list for PBXProject "Assignment one" */ = {
+		CACB443C26FF570900CCA38C /* Build configuration list for PBXProject "Assignment Two" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CACB444E26FF570A00CCA38C /* Debug */,
@@ -330,7 +330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CACB445026FF570A00CCA38C /* Build configuration list for PBXNativeTarget "Assignment one" */ = {
+		CACB445026FF570A00CCA38C /* Build configuration list for PBXNativeTarget "Assignment Two" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				CACB445126FF570A00CCA38C /* Debug */,
