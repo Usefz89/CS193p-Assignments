@@ -42,7 +42,6 @@
 		CACB443826FF570900CCA38C = {
 			isa = PBXGroup;
 			children = (
-				CAAC06E427025F68000216A5 /* Theme.swift */,
 				CACB444326FF570900CCA38C /* Assignment one */,
 				CACB444226FF570900CCA38C /* Products */,
 			);
@@ -60,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				CACB444426FF570900CCA38C /* Assignment_oneApp.swift */,
+				CAAC06E427025F68000216A5 /* Theme.swift */,
 				CACB444626FF570900CCA38C /* ContentView.swift */,
 				CAAC06E0270247D6000216A5 /* MemoryGame.swift */,
 				CAAC06E227024867000216A5 /* EmojiMemoryGame.swift */,
