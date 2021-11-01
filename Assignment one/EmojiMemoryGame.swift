@@ -11,24 +11,9 @@ class EmojiMemoryGame: ObservableObject {
     
     
     @Published private var model: MemoryGame<String>
-    private var theme: Theme
-    var themeName: String {
-        theme.name
-    }
-     
-    private static var themes: [Theme] =
-        [
-            Theme(name: "Vehicle Emojis", emojis: ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑", "🛻", "🚚", "🚛", "🚜", "✈️", "🛵", "🏍", "🚀"], numberOfPairsOfCards: 8, color: "blue"),
-            Theme(name: "Sports Emojis", emojis: ["⚽️", "🏀", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏉", "🏓", "🏸"], numberOfPairsOfCards: 6, color: "red"),
-            Theme(name: "Foods Emojis", emojis: ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍔", "🍟", "🍕"], numberOfPairsOfCards: 5, color: "green"),
-            Theme(name: "Object Emojis", emojis: ["⌚️", "📱", "💻", "⌨️", "🖥", "🖨", "🖱", "🕹", "💽", "💾", "📷", "📞", "☎️", "📟", "🎙", "⏰", "💡"], numberOfPairsOfCards: 8, color: "orange"),
-            Theme(name: "Flags Emojis", emojis: ["🏳️","🏴","🏴‍☠️","🏁","🚩","🏳️‍🌈","🇺🇳","🇦🇫","🇦🇽","🇦🇱","🇩🇿","🇦🇸","🇦🇩","🇦🇴","🇦🇮","🇦🇺","🇦🇹","🇧🇪","🇧🇯","🇨🇦","🇮🇨","🇨🇻","🇧🇶","🇫🇷","🇵🇫","🇮🇶","🇮🇱","🇮🇹","🇯🇴",], numberOfPairsOfCards: 8, color: "black"),
-            Theme(name: "", emojis: ["🐶","🐱","🐭","🐹","🐰","🦊","🐻","🐼","🐨","🐯","🐮","🐷","🐸","🐵","🐔"], numberOfPairsOfCards: 8, color: "yellow")
-        ]
-    
+    var theme: Theme = ThemesStore().themes[0]
+   
     init() {
-        theme = Self.themes.randomElement()!
-        theme.emojis.shuffle()
         model = Self.makeMemoryGame(theme: theme)
     }
     
@@ -56,13 +41,9 @@ class EmojiMemoryGame: ObservableObject {
     
     //MARK: - FUNCTIONS:
     
-    private static func chooseTheme() -> Theme {
-        Self.themes[Int.random(in: 0 ..< EmojiMemoryGame.themes.count)]
-    }
-    
      static func makeMemoryGame(theme: Theme) -> MemoryGame<String> {
         return MemoryGame(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
-            theme.emojis[pairIndex]
+            theme.emojis.map{String($0)}[pairIndex]
         }
         
     }
@@ -74,27 +55,7 @@ class EmojiMemoryGame: ObservableObject {
     }
     
     func startNewGame() {
-        theme = Self.themes.randomElement()!
-        theme.emojis.shuffle()
         model = Self.makeMemoryGame(theme: theme)
-            
     }
-    
-    
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-//    static var vehicleEmojis = ["🚗", "🚕", "🚙", "🚌", "🚎", "🏎", "🚓", "🚑"]
-//    static var sportEmojis = ["⚽️", "🏀", "🏈", "⚾️", "🥎", "🎾", "🏐", "🏉", "🏓", "🏸"]
-//    static var foodEmojis = ["🍏", "🍎", "🍐", "🍊", "🍋", "🍌", "🍉", "🍇", "🍓", "🍔", "🍟", "🍕"]

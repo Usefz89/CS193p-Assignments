@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct EmojiMemoryGameView: View {
     
     @ObservedObject var viewModel: EmojiMemoryGame
    
@@ -31,7 +31,7 @@ struct ContentView: View {
                     newGameButton
                 })
             }
-            .navigationTitle("\(viewModel.themeName)")
+            .navigationTitle("\(viewModel.theme.name)")
         }
         .padding(.horizontal)
     }
@@ -75,6 +75,6 @@ struct CardView: View  {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         let game = EmojiMemoryGame()
-        ContentView(viewModel: game)
+        EmojiMemoryGameView(viewModel: game)
     }
 }
