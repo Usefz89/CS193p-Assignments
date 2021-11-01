@@ -14,7 +14,7 @@ struct EmojiMemoryGameView: View {
     
    
     var body: some View {
-        NavigationView {
+        
             VStack {
                 ScrollView  {
                     LazyVGrid(columns: [GridItem(.adaptive(minimum: 65))]) {
@@ -31,7 +31,7 @@ struct EmojiMemoryGameView: View {
                     .font(.headline)
             }
             .navigationTitle("\(game.theme.name)")
-        }
+        
         .padding(.horizontal)
     }
     var newGameButton: some View {
@@ -73,7 +73,7 @@ struct CardView: View  {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        let game = EmojiMemoryGame()
+        let game = EmojiMemoryGame(theme: ThemesStore().themes[0])
         EmojiMemoryGameView(game: game)
             .environmentObject(ThemesStore())
     }

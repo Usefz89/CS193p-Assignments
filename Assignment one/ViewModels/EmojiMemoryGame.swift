@@ -17,7 +17,8 @@ class EmojiMemoryGame: ObservableObject {
         }
     }
    
-    init() {
+    init(theme: Theme) {
+        self.theme = theme 
         model = Self.makeMemoryGame(theme: theme)
     }
     

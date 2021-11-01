@@ -15,13 +15,19 @@ struct ThemeChooserView: View {
     var body: some View {
         NavigationView {
             List(themes) { theme in
-                VStack(alignment: .leading) {
-                    Text(theme.name)
-                        .font(.system(.title).bold())
-                        .foregroundColor(Color(rgbaColor: theme.color))
-                        .padding(.bottom)
-                    Text("All of: " + theme.emojis)
-                        .lineLimit(1)
+                
+                NavigationLink(destination: EmojiMemoryGameView(game: EmojiMemoryGame(theme: theme))) {
+                    VStack(alignment: .leading) {
+                        Text(theme.name)
+                            .font(.system(.title).bold())
+                            .foregroundColor(Color(rgbaColor: theme.color))
+                            .padding(.bottom, 2)
+                        Text("Number of Cards: \(theme.numberOfPairsOfCards * 2)")
+                            .font(.headline)
+                        Text("All of: " + theme.emojis)
+                            .font(.headline)
+                            .lineLimit(1)
+                    }
                 }
             }
             .navigationTitle("Memorize")
@@ -31,11 +37,7 @@ struct ThemeChooserView: View {
 
 struct ThemeChooserView_Previews: PreviewProvider {
     static var previews: some View {
-        if #available(iOS 15.0, *) {
-            ThemeChooserView()
-                .environmentObject(ThemesStore())
-        } else {
-            // Fallback on earlier versions
-        }
+        ThemeChooserView()
+            .environmentObject(ThemesStore())
     }
 }
