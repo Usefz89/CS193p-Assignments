@@ -11,7 +11,11 @@ class EmojiMemoryGame: ObservableObject {
     
     
     @Published private var model: MemoryGame<String>
-    var theme: Theme = ThemesStore().themes[0]
+    var theme: Theme = ThemesStore().themes[0] {
+        didSet {
+            self.startNewGame()
+        }
+    }
    
     init() {
         model = Self.makeMemoryGame(theme: theme)
@@ -25,18 +29,6 @@ class EmojiMemoryGame: ObservableObject {
     
     var scoreCounter: Int {
         model.scoreCounter
-    }
-    
-     var color: Color {
-        switch theme.color {
-        case "red": return Color.red
-        case "blue": return Color.blue
-        case "green": return Color.green
-        case "orange": return Color.orange
-        case "black": return Color.black
-        case "yellow": return Color.yellow
-        default: return Color.red
-        }
     }
     
     //MARK: - FUNCTIONS:
