@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct Theme: Identifiable {
+struct Theme: Identifiable, Hashable {
     var name: String
     var emojis: String
     var numberOfPairsOfCards: Int
@@ -18,11 +18,11 @@ struct Theme: Identifiable {
     
   
     
-    init(name: String, emojis: String, numberOfPairsOfCards: Int, color: RGBAColor) {
+    init(name: String, emojis: String, numberOfPairsOfCards: Int, rgbaColor: RGBAColor) {
         self.name = name
         self.emojis = emojis
         self.numberOfPairsOfCards = numberOfPairsOfCards > emojis.count ? emojis.count : numberOfPairsOfCards
-        self.color = color
+        self.color = rgbaColor
     }
 
 }
@@ -32,5 +32,6 @@ struct RGBAColor: Codable, Equatable, Hashable {
  let green: Double
  let blue: Double
  let alpha: Double
+    
 }
 

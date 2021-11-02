@@ -11,7 +11,7 @@ class EmojiMemoryGame: ObservableObject {
     
     
     @Published private var model: MemoryGame<String>
-    var theme: Theme = ThemesStore().themes[0] {
+    var theme: Theme {
         didSet {
             self.startNewGame()
         }
