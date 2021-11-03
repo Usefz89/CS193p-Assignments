@@ -40,7 +40,6 @@ struct ThemeChooserView: View {
                     .sheet(item: $itemToPresent, content: { item in
                         if let index = themeStore.themes.index(matching: item) {
                             ThemeEditor(theme: $themeStore.themes[index])
-
                         }
                     })
 //                   .sheet(isPresented: $editorToShow {
@@ -64,8 +63,15 @@ struct ThemeChooserView: View {
             }
             .environment(\.editMode, $editMode)
             .navigationTitle("Memorize")
+            
+            EmojiMemoryGameView(game: EmojiMemoryGame(theme: themeStore.themes[0]))
+
+            
+
         }
+//        .navigationViewStyle(.stack)
     }
+   
     
     //MARK: - Add New Theme
 

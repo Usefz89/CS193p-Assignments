@@ -11,17 +11,15 @@ class EmojiMemoryGame: ObservableObject {
     
     
     @Published private var model: MemoryGame<String>
-    var theme: Theme 
+    var theme: Theme = ThemesStore().themes[0]
    
     init(theme: Theme) {
         self.theme = theme 
         model = Self.makeMemoryGame(theme: theme)
     }
     
-    
      var cards: [MemoryGame<String>.Card] {
          model.cards
-        
     }
     
     var scoreCounter: Int {
@@ -48,6 +46,7 @@ class EmojiMemoryGame: ObservableObject {
     
     func startNewGame() {
         model = Self.makeMemoryGame(theme: theme)
+        
     }
 }
 

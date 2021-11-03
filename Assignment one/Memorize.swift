@@ -14,7 +14,6 @@ struct Memorize: App {
         WindowGroup {
             ThemeChooserView()
                 .environmentObject(themeStore)
-                
         }
     }
 }

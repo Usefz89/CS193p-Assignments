@@ -294,3 +294,20 @@ extension UIColor {
         }
     }
 }
+
+extension View {
+    func cardify(isFaceUp: Bool = false) -> some View {
+        self.modifier(Cardify(isFaceUp: isFaceUp))
+    }
+}
+
+extension Array where Element == Int {
+    var firstAndOnly: Int? {
+        if self.count == 1 {
+            return self.first!
+        } else {
+            return nil
+        }
+    }
+    
+}
