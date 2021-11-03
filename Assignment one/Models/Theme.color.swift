@@ -19,9 +19,12 @@ extension Theme {
     
     /// Initiate Theme from actual Color struct
     ///
-    init(name: String, numberOfPairOfCards: Int, emojis: String, color: Color) {
+    init(name: String, numberOfPairsOfCards: Int, emojis: String, color: Color) {
+        var computedNumberOfPairs: Int {
+            return numberOfPairsOfCards > emojis.count ? emojis.count : numberOfPairsOfCards
+        }
         self.name = name
-        self.numberOfPairsOfCards = numberOfPairOfCards
+        self.numberOfPairsOfCards = computedNumberOfPairs
         self.emojis = emojis
         self.color = RGBAColor(color: color)
         self.actualColor = color 

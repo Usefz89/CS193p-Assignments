@@ -11,11 +11,7 @@ class EmojiMemoryGame: ObservableObject {
     
     
     @Published private var model: MemoryGame<String>
-    var theme: Theme {
-        didSet {
-            self.startNewGame()
-        }
-    }
+    var theme: Theme 
    
     init(theme: Theme) {
         self.theme = theme 
@@ -35,8 +31,11 @@ class EmojiMemoryGame: ObservableObject {
     //MARK: - FUNCTIONS:
     
      static func makeMemoryGame(theme: Theme) -> MemoryGame<String> {
-        return MemoryGame(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
-            theme.emojis.map{String($0)}[pairIndex]
+         // If emojis has been removed change the number of pairs to emoji.count
+        
+         
+    return MemoryGame(numberOfPairsOfCards: theme.numberOfPairsOfCards) { pairIndex in
+            theme.emojis.withNoRepeatedCharacters.map{String($0)}[pairIndex]
         }
         
     }

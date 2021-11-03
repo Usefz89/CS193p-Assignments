@@ -11,23 +11,13 @@ struct ThemeChooserView: View {
     
     @EnvironmentObject var themeStore: ThemesStore
     @State private var editMode: EditMode = .inactive
-    var themes: [Theme] {
-        themeStore.themes
-    }
-    
-    @State private var games: [Int: EmojiMemoryGame] = [
-        0: EmojiMemoryGame(theme: ThemesStore().themes[0]),
-        1: EmojiMemoryGame(theme: ThemesStore().themes[1]),
-        2: EmojiMemoryGame(theme: ThemesStore().themes[2]),
-        3: EmojiMemoryGame(theme: ThemesStore().themes[3]),
-        4: EmojiMemoryGame(theme: ThemesStore().themes[4]),
-        5: EmojiMemoryGame(theme: ThemesStore().themes[5]),
-    ]
+    @State private var editorToShow: Bool = false
+    @State private var itemToPresent: Theme?
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(themes) { theme in
+                ForEach(themeStore.themes) { theme in
                     NavigationLink(
                         destination: EmojiMemoryGameView(
                             game: EmojiMemoryGame(theme: theme)
@@ -38,17 +28,32 @@ struct ThemeChooserView: View {
                                 .font(.system(.title).bold())
                                 .foregroundColor(Color(rgbaColor: theme.color))
                                 .padding(.bottom, 2)
-                            Text("Number of Cards: \(theme.numberOfPairsOfCards * 2)")
+                            Text("Number of Cards = \(theme.numberOfPairsOfCards * 2)")
                                 .font(.headline)
-                            Text("All of: " + theme.emojis)
+                            Text("All of: " + theme.emojis.withNoRepeatedCharacters)
                                 .font(.headline)
                                 .lineLimit(1)
                         }
                     }
+                    // This is the solution for editing the selected row.
+                    // Check later why the isPresetned init is not doing very well. 
+                    .sheet(item: $itemToPresent, content: { item in
+                        if let index = themeStore.themes.index(matching: item) {
+                            ThemeEditor(theme: $themeStore.themes[index])
+
+                        }
+                    })
+//                   .sheet(isPresented: $editorToShow {
+//                        if let index = themeStore.themes.index(matching: theme) {
+//                            ThemeEditor(theme: $themeStore.themes[index])
+//                        }
+//                    }
+                    
+                    .gesture(editMode.isEditing ? tap(theme: theme) : nil)
+                   
                 }
                 .onDelete(perform: removeTheme)
             }
-            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     addThemeButton
@@ -58,7 +63,6 @@ struct ThemeChooserView: View {
                 }
             }
             .environment(\.editMode, $editMode)
-            
             .navigationTitle("Memorize")
         }
     }
@@ -66,15 +70,17 @@ struct ThemeChooserView: View {
     //MARK: - Add New Theme
 
     var addThemeButton: some View {
-        Button("Add Theme") {
-            // append theme to themes
+        Button {
             appendTheme()
+            itemToPresent = themeStore.themes.last!
+        } label: {
+            Image(systemName: "plus")
         }
     }
     
     private func appendTheme() {
         themeStore.themes.append(
-            Theme(name: "New", numberOfPairOfCards: 2, emojis: "😀😆", color: .black)
+            Theme(name: "", numberOfPairsOfCards: 2, emojis: "😀😆😎🥸", color: .black)
         )
     }
     
@@ -83,7 +89,29 @@ struct ThemeChooserView: View {
     private func removeTheme(at offSet: IndexSet) {
         themeStore.themes.remove(atOffsets: offSet)
     }
+    
+    //MARK: - Gestures
+    
+    private func tap(theme: Theme ) -> some Gesture {
+        TapGesture()
+            .onEnded { _ in
+                itemToPresent = theme
+            }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //MARK: - Preview
 
